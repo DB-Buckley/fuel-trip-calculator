@@ -1,16 +1,30 @@
-window.initMap = function() {
-  fetchFuelData();
-};
-
 const publicSheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlR9zaL-9jbKA5TgzfRUYASiElCc_fIZ3BdfMmzt5_YPIzrGD4b5NXJHKfOPaTkkbH5SadjhOxwrrN/pub?output=csv";
 let fuelData = [];
+let autocompleteStart, autocompleteEnd;
+
+// Make initMap globally accessible
+window.initMap = function () {
+  const startInput = document.getElementById("start");
+  const endInput = document.getElementById("end");
+
+  // Set up Google Maps Autocomplete
+  autocompleteStart = new google.maps.places.Autocomplete(startInput, {
+    types: ["geocode"],
+    componentRestrictions: { country: "ZA" }  // Restrict to South Africa (optional)
+  });
+
+  autocompleteEnd = new google.maps.places.Autocomplete(endInput, {
+    types: ["geocode"],
+    componentRestrictions: { country: "ZA" }
+  });
+
+  fetchFuelData();
+};
 
 async function fetchFuelData() {
   try {
     const response = await fetch(publicSheetURL);
     const csvText = await response.text();
-    console.log("Fetched CSV:", csvText.slice(0, 300));
-
     const rows = csvText.split("\n").slice(1);
 
     fuelData = rows
@@ -25,11 +39,10 @@ async function fetchFuelData() {
       }))
       .filter(row => row.type && row.region && !isNaN(row.current));
 
-    console.log("Parsed fuelData:", fuelData);
     populateDropdowns();
   } catch (err) {
     console.error("Failed to fetch or parse fuel data:", err);
-    document.getElementById("fuelCostResult").innerText = "⚠️ Unable to load fuel prices. Please try again later.";
+    document.getElementById("fuelCostResult").innerText = "⚠️ Unable to load fuel prices.";
   }
 }
 
@@ -49,7 +62,7 @@ function getDistanceAndCalculate() {
   const consumption = parseFloat(document.getElementById("consumption").value);
 
   if (!start || !end || isNaN(consumption)) {
-    document.getElementById("fuelCostResult").innerText = "🚫 Please enter valid locations and consumption.";
+    document.getElementById("fuelCostResult").innerText = "🚫 Please enter valid locations and fuel consumption.";
     return;
   }
 
