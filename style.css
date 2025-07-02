@@ -1,0 +1,35 @@
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background: #2b70f7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+#fuelCostResult {
+  margin-top: 1.5rem;
+  font-weight: bold;
+}

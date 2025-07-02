@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuel Cost Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🛣 Travel Fuel Cost Calculator</h1>
+
+    <label for="start">Start Location:</label>
+    <input id="start" type="text" placeholder="e.g. Cape Town" />
+
+    <label for="end">Destination:</label>
+    <input id="end" type="text" placeholder="e.g. Johannesburg" />
+
+    <label for="consumption">Fuel Consumption (L/100km):</label>
+    <input id="consumption" type="number" placeholder="e.g. 7.5" />
+
+    <label for="fuelType">Fuel Type:</label>
+    <select id="fuelType"></select>
+
+    <label for="region">Region:</label>
+    <select id="region"></select>
+
+    <button onclick="getDistanceAndCalculate()">Calculate</button>
+
+    <div id="fuelCostResult"></div>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo0Dhk8VGoWdVZY31Mf9U_3QzfXnko1lc&libraries=places"></script>
+  <script src="script.js"></script>
+</body>
+</html>
