@@ -3,23 +3,31 @@ const publicSheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlR9zaL
 let fuelData = [];
 
 async function fetchFuelData() {
-  const response = await fetch(publicSheetURL);
-  const csvText = await response.text();
-  const rows = csvText.split("\n").slice(1);
+  try {
+    const response = await fetch(publicSheetURL);
+    const csvText = await response.text();
+    console.log("Fetched CSV:", csvText.slice(0, 300));
 
-  fuelData = rows
-    .map(line => line.split(","))
-    .filter(cells => cells.length >= 5)
-    .map(cells => ({
-      type: cells[0].trim(),
-      region: cells[1].trim(),
-      previous: parseFloat(cells[2]),
-      current: parseFloat(cells[3]),
-      predicted: parseFloat(cells[4])
-    }))
-    .filter(row => row.type && row.region && !isNaN(row.current));
+    const rows = csvText.split("\n").slice(1);
 
-  populateDropdowns();
+    fuelData = rows
+      .map(line => line.split(","))
+      .filter(cells => cells.length >= 5)
+      .map(cells => ({
+        type: cells[0].trim(),
+        region: cells[1].trim(),
+        previous: parseFloat(cells[2]),
+        current: parseFloat(cells[3]),
+        predicted: parseFloat(cells[4])
+      }))
+      .filter(row => row.type && row.region && !isNaN(row.current));
+
+    console.log("Parsed fuelData:", fuelData);
+    populateDropdowns();
+  } catch (err) {
+    console.error("Failed to fetch or parse fuel data:", err);
+    document.getElementById("fuelCostResult").innerText = "⚠️ Unable to load fuel prices. Please try again later.";
+  }
 }
 
 function populateDropdowns() {
@@ -27,9 +35,9 @@ function populateDropdowns() {
   const regions = [...new Set(fuelData.map(d => d.region))];
 
   document.getElementById("fuelType").innerHTML =
-    fuelTypes.map(t => `<option value="\${t}">\${t}</option>`).join("");
+    fuelTypes.map(t => `<option value="${t}">${t}</option>`).join("");
   document.getElementById("region").innerHTML =
-    regions.map(r => `<option value="\${r}">\${r}</option>`).join("");
+    regions.map(r => `<option value="${r}">${r}</option>`).join("");
 }
 
 function getDistanceAndCalculate() {
@@ -74,9 +82,9 @@ function calculateFuelCost(distance, consumption) {
   const totalCost = litresUsed * fuel.current;
 
   document.getElementById("fuelCostResult").innerHTML = `
-    📍 Distance: <strong>\${distance.toFixed(1)} km</strong><br>
-    ⛽ Fuel Needed: <strong>\${litresUsed.toFixed(1)} L</strong><br>
-    💸 Estimated Fuel Cost: <strong>R\${totalCost.toFixed(2)}</strong> @ R\${fuel.current.toFixed(2)}/L
+    📍 Distance: <strong>${distance.toFixed(1)} km</strong><br>
+    ⛽ Fuel Needed: <strong>${litresUsed.toFixed(1)} L</strong><br>
+    💸 Estimated Fuel Cost: <strong>R${totalCost.toFixed(2)}</strong> @ R${fuel.current.toFixed(2)}/L
   `;
 }
 
