@@ -1,6 +1,11 @@
+let fuelData = [];
 
 const publicSheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlR9zaL-9jbKA5TgzfRUYASiElCc_fIZ3BdfMmzt5_YPIzrGD4b5NXJHKfOPaTkkbH5SadjhOxwrrN/pub?output=csv";
-let fuelData = [];
+
+function initMap() {
+  // Google Maps API loaded, now fetch fuel data
+  fetchFuelData();
+}
 
 async function fetchFuelData() {
   try {
@@ -87,5 +92,3 @@ function calculateFuelCost(distance, consumption) {
     💸 Estimated Fuel Cost: <strong>R${totalCost.toFixed(2)}</strong> @ R${fuel.current.toFixed(2)}/L
   `;
 }
-
-fetchFuelData();
