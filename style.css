@@ -57,7 +57,11 @@ button {
   font-size: 12px;
 }
 #logoCenter {
-  text-align: center;
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
