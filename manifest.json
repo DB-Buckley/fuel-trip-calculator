@@ -1,19 +1,19 @@
 {
-  "id": "https://db-buckley.github.io/fuel-trip-calculator/"
+  "id": "/fuel-trip-calculator/"
   "name": "Fuel Trip Calculator",
   "short_name": "FuelCalc",
-  "start_url": "https://db-buckley.github.io/fuel-trip-calculator/",
+  "start_url": "/fuel-trip-calculator/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#F5A623",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "/fuel-trip-calculator/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "/fuel-trip-calculator/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
