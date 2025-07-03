@@ -1,7 +1,8 @@
 {
+  "id": "https://db-buckley.github.io/fuel-trip-calculator/"
   "name": "Fuel Trip Calculator",
   "short_name": "FuelCalc",
-  "start_url": "./",
+  "start_url": "https://db-buckley.github.io/fuel-trip-calculator/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#F5A623",
