@@ -5,7 +5,6 @@ body {
   padding: 0;
   background: #f4f4f4;
 }
-
 .container {
   max-width: 600px;
   margin: 2rem auto;
@@ -41,4 +40,17 @@ button {
 }
 .calcButton {
   background-color: #001489;
+}
+#logo {
+  max-height: 120px;
+  max-width: 120px;
+}
+
+#logoContainer {
+  text-align: center;
+}
+
+.createdBy {
+  text-align: center;
+  font-size: 20px;
 }
