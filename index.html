@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Mzansi Fuel Travel Calculator</h1>
+    <h1 class="headingMain">Mzansi Fuel Travel Calculator</h1>
 
     <label for="start">Start Location:</label>
     <input id="start" type="text" placeholder="e.g. Cape Town" />
@@ -17,7 +17,7 @@
     <input id="end" type="text" placeholder="e.g. Johannesburg" />
 
     <label for="consumption">Fuel Consumption (L/100km):</label>
-    <input id="consumption" type="number" placeholder="e.g. 7.5" />
+    <input id="consumption" type="number" placeholder="7.4 l/100km is a good average" />
 
     <label for="fuelType">Fuel Type:</label>
     <select id="fuelType"></select>
@@ -25,7 +25,7 @@
     <label for="region">Region:</label>
     <select id="region"></select>
 
-    <button onclick="getDistanceAndCalculate()">Calculate</button>
+    <button class="calcButton" onclick="getDistanceAndCalculate()">Calculate</button>
 
     <div id="fuelCostResult"></div>
   </div>
