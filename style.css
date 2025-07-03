@@ -9,7 +9,7 @@ body {
 .container {
   max-width: 600px;
   height: 100vh;
-  margin: 0;
+  margin: 0,auto;
   padding: 0;
   background: transparent; /* or set to 'none' or 'transparent' */
   border-radius: 0;
