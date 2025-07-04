@@ -103,3 +103,13 @@ function calculateFuelCost(distance, consumption) {
     💸 Estimated Fuel Cost: <strong>R${totalCost.toFixed(2)}</strong> @ R${fuel.current.toFixed(2)}/L
   `;
 }
+
+installButton.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response to install: ${outcome}`);
+    deferredPrompt = null;
+    installButton.style.display = 'none';
+  }
+});
