@@ -65,3 +65,15 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+#installButton {
+  padding: 0.5rem 1rem;
+  background-color: #001489;
+  max-width: 300px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
