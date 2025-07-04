@@ -9,6 +9,10 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <meta name="theme-color" content="#F5A623">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="FuelCalc">
+  <link rel="apple-touch-icon" href="/fuel-trip-calculator/icons/icon-192.png">
 </head>
 <body>
   <div class="container">
@@ -20,7 +24,13 @@
     <h1 class="headingMain">Travel Calculator</h1>
     <button id="installButton" style="display: none; margin: 20px auto; padding: 10px 20px; font-size: 1rem; border-radius: 8px; background-color: #001489; color: white; border: none; cursor: pointer;">
         Install Widget
-      </button>
+    </button>
+    <div id="iosPrompt">
+      <div id="iosPromptBar">
+    📱 Install this app: Tap 
+      <span><strong>Share</strong> <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/IOS_Share_icon.png" alt="Share Icon"> then “<strong>Add to Home Screen</strong>”</span>
+      </div>
+    </div>
 
     <label for="start">Start Location:</label>
     <input id="start" type="text" placeholder="e.g. Cape Town" />
@@ -60,6 +70,15 @@
     });
   }
 </script>
+  <script>
+  const isIos = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+  const isInStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
+
+  if (isIos && !isInStandalone) {
+    document.getElementById('iosPrompt').style.display = 'block';
+  }
+</script>
+
 
 </body>
 </html>
