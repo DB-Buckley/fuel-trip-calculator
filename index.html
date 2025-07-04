@@ -78,8 +78,9 @@
 <script>
   const isIos = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
   const isInStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
+  const isInIframe = window !== window.parent;
 
-  if (isIos && !isInStandalone) {
+  if (isIos && !isInStandalone && !isInIframe) {
     const banner = document.getElementById('iosPrompt');
     banner.style.display = 'block';
 
@@ -88,6 +89,7 @@
     });
   }
 </script>
+
 
 </body>
 </html>
