@@ -109,19 +109,5 @@ button {
   font-weight: bold;
 }
 
-#iosPromptClose {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.75rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: #F5A623;
-  cursor: pointer;
-}
-#iosPromptClose:hover {
-  color: #111;
-}
 
 
