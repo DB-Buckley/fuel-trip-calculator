@@ -71,14 +71,24 @@
     });
   }
 </script>
-  <script>
+<script>
   const isIos = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
   const isInStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
 
   if (isIos && !isInStandalone) {
-    document.getElementById('iosPrompt').style.display = 'block';
+    // Check localStorage to see if user dismissed it before
+    if (!localStorage.getItem('iosPromptDismissed')) {
+      document.getElementById('iosPrompt').style.display = 'block';
+    }
+
+    // Dismiss button handler
+    document.getElementById('iosPromptClose').addEventListener('click', () => {
+      document.getElementById('iosPrompt').style.display = 'none';
+      localStorage.setItem('iosPromptDismissed', 'true');
+    });
   }
 </script>
+
 
 
 </body>
