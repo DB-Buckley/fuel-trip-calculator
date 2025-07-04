@@ -123,15 +123,3 @@ installButton.addEventListener('click', async () => {
     installButton.style.display = 'none';
   }
 });
-
-const isIos = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-  const isInStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
-
-  if (isIos && !isInStandalone) {
-    const banner = document.getElementById('iosPrompt');
-    banner.style.display = 'block';
-
-    banner.addEventListener('click', () => {
-      banner.style.display = 'none';
-    });
-  }
