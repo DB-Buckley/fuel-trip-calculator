@@ -104,6 +104,16 @@ function calculateFuelCost(distance, consumption) {
   `;
 }
 
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.style.display = 'block'; // Show custom install button
+});
+
 installButton.addEventListener('click', async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
