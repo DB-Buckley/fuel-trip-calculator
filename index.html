@@ -58,39 +58,6 @@
     });
   }
 </script>
-  <script>
-  let deferredPrompt;
-  const installButton = document.getElementById('installButton');
-
-  // Listen for the beforeinstallprompt event
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installButton.style.display = 'inline-block';
-  });
-
-  // Handle the install button click
-  installButton.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(choiceResult => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        deferredPrompt = null;
-        installButton.style.display = 'none';
-      });
-    }
-  });
-
-  // Optional: Hide button if app is already installed
-  window.addEventListener('appinstalled', () => {
-    console.log('PWA installed');
-    installButton.style.display = 'none';
-  });
-</script>
 
 </body>
 </html>
