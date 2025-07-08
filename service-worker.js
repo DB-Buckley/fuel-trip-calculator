@@ -1,6 +1,5 @@
 const CACHE_NAME = 'fuel-trip-cache-v1';
 const urlsToCache = [
-const urlsToCache = [
   '/',
   '/index.html',
   '/styles.css',
