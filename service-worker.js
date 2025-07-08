@@ -3,7 +3,7 @@ const CACHE_NAME = 'fuel-trip-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles.css',
+  '/style.css',
   '/script.js',
   '/manifest.json',
   '/icons/icon-192.png',
